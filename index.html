@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joudy · عيد حبنا التاني</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- خطوط عربية ناعمة -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: linear-gradient(135deg, #1e1014 0%, #2c1a20 100%);
+        font-family: "Tajawal", "Cairo", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 1.5rem;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* قلوب في الخلفية */
+      .hearts-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .heart-float {
+        position: absolute;
+        color: rgba(255, 120, 150, 0.2);
+        font-size: 26px;
+        animation: float 14s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(0.8);
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-20vh) scale(1.3);
+          opacity: 0;
+        }
+      }
+
+      .main-card {
+        background: rgba(25, 15, 18, 0.75);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 50px 20px 50px 20px;
+        max-width: 1100px;
+        width: 100%;
+        padding: 3rem 2.8rem;
+        position: relative;
+        z-index: 10;
+        border: 1.5px solid rgba(255, 150, 170, 0.4);
+        box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 130, 150, 0.2);
+      }
+
+      /* اسم جودي بالعربي والإنجليزي */
+      .name-section {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .joudy-arabic {
+        font-size: 5rem;
+        font-weight: 900;
+        font-family: "Amiri", "Cairo", serif;
+        background: linear-gradient(145deg, #ffe0e5, #ffb3c1, #ff8da1);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 30px #ff4d6d, 0 0 60px #c9184a;
+        letter-spacing: 2px;
+        line-height: 1.3;
+        margin-bottom: 5px;
+      }
+
+      .subtitle {
+        color: #ffc2d1;
+        font-size: 1.6rem;
+        font-weight: 400;
+        border-bottom: 2px dashed #ff758f;
+        display: inline-block;
+        padding-bottom: 12px;
+        margin-top: 5px;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      /* الرسالة - كلام حب بالعربي */
+      .love-letter {
+        background: rgba(70, 35, 45, 0.6);
+        backdrop-filter: blur(8px);
+        border-radius: 40px 10px 40px 10px;
+        padding: 2.3rem;
+        margin: 35px 0;
+        border: 1px solid #ff99aa;
+        color: #fff5f7;
+        font-size: 1.3rem;
+        line-height: 1.9;
+        border-right: 12px solid #ff4d6d;
+        border-left: 4px solid #ff99aa;
+        box-shadow: inset 0 0 40px rgba(255, 100, 130, 0.1);
+      }
+
+      .love-letter i {
+        color: #ffb3c6;
+        margin-left: 10px;
+        margin-right: 5px;
+      }
+
+      /* قسم معرض الصور - بس صور جودي */
+      .gallery-head {
+        text-align: center;
+        margin: 50px 0 30px;
+      }
+
+      .gallery-title-ar {
+        font-size: 2.2rem;
+        color: #ffe3ec;
+        background: rgba(255, 77, 109, 0.35);
+        padding: 0.8rem 2.5rem;
+        border-radius: 70px;
+        display: inline-block;
+        border: 1.8px solid #ff99aa;
+        backdrop-filter: blur(6px);
+        font-weight: 600;
+        font-family: "Amiri", serif;
+      }
+
+      .photo-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        margin: 40px 0;
+      }
+
+      .photo-card {
+        width: 260px;
+        background: rgba(40, 22, 28, 0.9);
+        backdrop-filter: blur(4px);
+        border-radius: 30px 10px 30px 10px;
+        padding: 22px 22px 28px;
+        border: 1px solid #ff99aa;
+        box-shadow: 0 18px 0 #4a1e28, 0 25px 35px black;
+        transition: 0.3s;
+      }
+
+      .photo-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 22px 0 #6b2c3a, 0 30px 45px black;
+        border-color: #ffc2d1;
+      }
+
+      .img-box {
+        width: 100%;
+        height: 260px;
+        border-radius: 20px 5px 20px 5px;
+        overflow: hidden;
+        border: 4px solid #ffb3c6;
+        outline: 2px solid #a1354b;
+        margin-bottom: 20px;
+        background: #1f1216;
+      }
+
+      .img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: 0.4s;
+      }
+
+      .img-box img:hover {
+        transform: scale(1.08);
+      }
+
+      .caption-ar {
+        color: #ffd9e2;
+        font-size: 1.3rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .caption-ar i {
+        color: #ff8fa3;
+      }
+
+      /* عيد حب تاني */
+      .anniversary-box {
+        background: linear-gradient(145deg, #2d1a1f, #1e1216);
+        border-radius: 80px;
+        padding: 1.6rem 2.2rem;
+        margin: 45px 0 30px;
+        color: #ffe6ec;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        border: 1px solid #ffa5b0;
+        font-size: 1.6rem;
+        font-weight: 500;
+      }
+
+      .big-heart-beat {
+        color: #ff4d6d;
+        font-size: 3rem;
+        animation: heartbeat 1.2s infinite;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.25);
+        }
+      }
+      /* ========== 🎵 مشغل الأغاني الرومانسي ========== */
+        .music-section {
+            background: linear-gradient(145deg, rgba(45, 25, 35, 0.9), rgba(30, 18, 24, 0.95));
+            border-radius: 90px 25px 90px 25px;
+            padding: 2.2rem 2rem;
+            margin: 45px 0 35px;
+            border: 1.5px solid #ff99aa;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 0 #4a1e28, 0 25px 35px black;
+        }
+        .music-section {
+            background: linear-gradient(145deg, rgba(45, 25, 35, 0.9), rgba(30, 18, 24, 0.95));
+            border-radius: 90px 25px 90px 25px;
+            padding: 2.2rem 2rem;
+            margin: 45px 0 35px;
+            border: 1.5px solid #ff99aa;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 0 #4a1e28, 0 25px 35px black;
+        }
+
+        .music-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            color: #ffd1dc;
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .music-header i {
+            color: #ff4d6d;
+            animation: pulse 1.8s infinite;
+        }
+        @keyframes pulse {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+      /* الزر بتاع كلام حب */
+      .btn-arabic {
+        background: transparent;
+        border: 3px solid #ff758f;
+        color: #ffe6ec;
+        padding: 18px 42px;
+        font-size: 1.5rem;
+        border-radius: 70px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin: 30px auto 20px;
+        backdrop-filter: blur(10px);
+        width: fit-content;
+        font-family: "Tajawal", sans-serif;
+      }
+
+      .btn-arabic:hover {
+        background: #ff4d6d;
+        border-color: white;
+        color: white;
+        box-shadow: 0 0 40px #ff4d6d;
+        transform: scale(1.05);
+      }
+
+      #arabicMessage {
+        text-align: center;
+        font-size: 1.5rem;
+        color: #fff0f2;
+        background: rgba(255, 77, 109, 0.55);
+        backdrop-filter: blur(8px);
+        padding: 18px 28px;
+        border-radius: 80px;
+        margin-top: 25px;
+        border: 1.5px solid #ffc2d1;
+        font-weight: 500;
+      }
+
+      .footer-ar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 55px;
+        color: #ffccd5;
+        border-top: 2px solid #ff99aa;
+        padding-top: 30px;
+        font-size: 1.4rem;
+      }
+
+      .signature-ar {
+        font-family: "Amiri", serif;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #ffb3c6;
+        text-shadow: 0 0 15px #c9184a;
+      }
+
+      /* ريسپونسيف */
+      @media (max-width: 700px) {
+        .main-card {
+          padding: 2rem 1.5rem;
+        }
+        .joudy-arabic {
+          font-size: 3.8rem;
+        }
+        .love-letter {
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <div class="main-card">
+      <!-- اسم جودي بالعربي + إنجليزي -->
+      <div class="name-section">
+        <div class="joudy-arabic">Joudy</div>
+        <span class="subtitle">  ❤️عيد حبنا التاني</span>
+      </div>
+
+      <!-- 💌 رسالة حب طويلة بالعربي من قلبك -->
+      <div class="love-letter">
+        <i class="fas fa-heart"></i> لسيدتي الاولى والاخيرة : <br /><br />
+        الناس بتستنى يوم 14 فبراير عشان تعبر عن حبها، وأنا بستنى كل ثانية عشان أقولك
+        إني محظوظ بيكي يا أغلى ما عندي. 💗
+        <br /><br />
+        أنا مش بقولك كدا عشان الفلانتين انا كل يوم وإنتي معايا هو عيد.. كل سنة
+        وإنتي أحلى حاجة في حياتي. ✨😇💗
+        <br /><br />
+        <i class="fas fa-star"></i> دي تاني مره نحتفل بعيد الحب مع بعض. المره
+        الاولى محتفلناش اصلا بس اوعدك إن كل عيد حب جاي هيكون أحلى من اللي فات.
+        <br /><br />
+        وإنتي مش بس حبيبتي، إنتي الضحكة اللي في وشي والسند اللي في ظهري. ❤️
+        <br /><br />
+        كل سنة وإنتي منورة دنيتي يا روحي.. يا رب كل عيد حب وإحنا مع بعض وإنتي
+        دايماً كل سعادتي. 🥰💗💞
+        <br /><br />
+
+        بحبك. ❤️
+        <i class="fas fa-feather"></i> <br>
+        <audio src="amr.mp3" style="color-interpolation-filters: #c9184a;" controls></audio>
+      </div>
+
+      <!-- ===== معرض صور جودي ===== -->
+      <div class="gallery-head">
+        <span class="gallery-title-ar">✦ جودي في أكتر من صورة ✦</span>
+      </div>
+
+      <div class="photo-grid">
+        <!-- 
+            🖼️ ضع هنا صور جودي — استبدل لينكات Unsplash بلينكات صورها الحقيقية
+        -->
+
+        <!-- صورة 1 -->
+        <div class="photo-card">
+          <div class="img-box">
+            <!-- 🔁 استبدل الرابط ده برابط صورة جودي -->
+            <img src="1.jpeg" alt="">
+          </div>
+          <div class="caption-ar">
+            <i class="fas fa-crown"></i> جودي <i class="fas fa-crown"></i>
+          </div>
+        </div>
+
+        <!-- صورة 2 -->
+        <div class="photo-card">
+          <div class="img-box">
+            <!-- 🔁 استبدل الرابط ده برابط صورة جودي -->
+            <img src="2.jpeg" alt="">
+          </div>
+          <div class="caption-ar">
+            <i class="fas fa-smile"></i> جمال جودي<i class="fas fa-smile"></i>
+          </div>
+        </div>
+
+        <!-- صورة 3 -->
+        <div class="photo-card">
+          <div class="img-box">
+            <!-- 🔁 استبدل الرابط ده برابط صورة جودي -->
+            <img src="3.jpeg" alt="">
+          </div>
+          <div class="caption-ar">
+            <i class="fas fa-camera"></i>حلاوه جودي<i class="fas fa-camera"></i>
+          </div>
+        </div>
+      </div>
+
+      <p
+        style="
+          text-align: center;
+          color: #ffb3c6;
+          font-size: 1.2rem;
+          margin-top: -10px;
+          font-style: italic;
+        "
+      >
+        "My sweet girl"
+      </p>
+      
+
+      <!-- عيد حب تاني -->
+      <div class="anniversary-box">
+        <i class="fas fa-heart big-heart-beat"></i>
+        <span>سنتين حب ومكملين لحد اخر  العمر</span>
+        <i class="fas fa-heart big-heart-beat"></i>
+      </div>
+
+      <!-- الزر: كلام حب إضافي بالعربي -->
+      <button id="loveBtn" class="btn-arabic">
+        <i class="fas fa-heart"></i> دوس هنا ابرعي
+        <i class="fas fa-heart"></i>
+      </button>
+      <div id="arabicMessage"></div>
+
+      <!-- التوقيع -->
+      <div class="footer-ar">
+        <span>من قلب</span>
+        <span class="signature-ar">Ahmed</span>
+        <span style="font-size: 2rem">🕊️</span>
+      </div>
+    </div>
+
+    <script>
+      // خلفية قلوب
+      function heartsBackground() {
+        const container = document.getElementById("heartsBg");
+        for (let i = 0; i < 45; i++) {
+          const heart = document.createElement("span");
+          heart.className = "heart-float";
+          const heartsArray = ["❤️", "🧡", "💖", "💘", "🌸", "✨", "💕"];
+          heart.innerHTML =
+            heartsArray[Math.floor(Math.random() * heartsArray.length)];
+          heart.style.left = Math.random() * 100 + "%";
+          heart.style.animationDelay = Math.random() * 16 + "s";
+          heart.style.fontSize = Math.floor(Math.random() * 30) + 18 + "px";
+          container.appendChild(heart);
+        }
+      }
+      heartsBackground();
+
+      // 💌 أشعار وكلام حب بالعربي لجودي
+      const btn = document.getElementById("loveBtn");
+      const msgDiv = document.getElementById("arabicMessage");
+
+      const arabicLoveMessages = [
+        "جودي... انا بحمد ربنا عشان انتي موجوده في حياتي. 💘",
+        "سنتين ولسه بحبك زي أول يوم. بالظبط. ولا نقصت ولا حاجة. ❤️",
+        "كل ما أشوف صورتك بفتكر إن في حاجات جميلة في الدنيا. وانتي أجملهم.",
+        "يا رب تفضلي جميلة كده. ويا رب تفضلي ليا. 🥀",
+        "باحلم إنك تكوني جمبي كل صباح. بس حتى من غير ما تكوني جمبي، أنتي كل أحلامي.",
+        "اسمك جودي.ومن غيرك هلغي وجودي. 🕊️",
+        "أنا مش شايف صورك. أنا بشوف مستقبلي كله معاكي.",
+        "عيد حب سعيد يا أحلى جودي في الدنيا كلها. 🍓",
+        "لو كان الحب كلام، كنت كتبتلك كتب. بس هو إحساس، وإنتي بس اللي حاسة بيه.",
+        "ربنا يبعد عننا اي عين برص",
+        "ربنا يهديكي عليا ولسانك دا يشتغل شويه معايا كدا و ينقط كلام حلو",
+        "هتقوليلي انت بضان تاني هشتمك "
+      ];
+
+      btn.addEventListener("click", function () {
+        const randomMsg =
+          arabicLoveMessages[
+            Math.floor(Math.random() * arabicLoveMessages.length)
+          ];
+        msgDiv.innerHTML = "💌 " + randomMsg + " 💌";
+
+        // طقطقة قلوب صغيرة
+        for (let i = 0; i < 14; i++) {
+          const miniHeart = document.createElement("span");
+          miniHeart.innerHTML = "💖";
+          miniHeart.style.position = "absolute";
+          miniHeart.style.left = btn.offsetLeft + btn.offsetWidth / 2 + "px";
+          miniHeart.style.top = btn.offsetTop + btn.offsetHeight / 2 + "px";
+          miniHeart.style.fontSize = Math.random() * 26 + 14 + "px";
+          miniHeart.style.pointerEvents = "none";
+          miniHeart.style.zIndex = "9999";
+          miniHeart.style.transition = "all 0.9s ease-out";
+          miniHeart.style.opacity = "1";
+          document.body.appendChild(miniHeart);
+
+          setTimeout(() => {
+            miniHeart.style.transform = `translate(${
+              Math.random() * 160 - 80
+            }px, ${Math.random() * -150 - 40}px) rotate(${
+              Math.random() * 360
+            }deg)`;
+            miniHeart.style.opacity = "0";
+          }, 15);
+
+          setTimeout(() => miniHeart.remove(), 950);
+        }
+      });
+    </script>
+
+    <!-- تذكرة لنفسك -->
+    <div style="display: none">
+      الكلام الحلو كله بالعربي — صور جودي بس — عيد حب تاني — كل حاجة زي ما حبينا
+    </div>
+  </body>
+</html>
